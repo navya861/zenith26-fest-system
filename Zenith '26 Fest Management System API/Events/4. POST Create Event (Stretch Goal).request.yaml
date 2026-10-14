@@ -1,0 +1,21 @@
+$kind: http-request
+description: Admin endpoint to create a new event with server validation.
+url: "{{baseUrl}}/api/events"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "title": "AI Robotics Hackathon",
+      "category": "Technical",
+      "description": "Build autonomous systems in 24 hours.",
+      "event_date": "2026-11-15",
+      "event_time": "09:00 AM",
+      "venue": "Innovation Lab",
+      "capacity": 50,
+      "fee": 0,
+      "icon": "🤖"
+    }
+order: 4000

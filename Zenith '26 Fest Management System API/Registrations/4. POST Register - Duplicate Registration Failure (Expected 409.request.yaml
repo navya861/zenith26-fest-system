@@ -1,0 +1,17 @@
+$kind: http-request
+name: 4. POST Register - Duplicate Registration Failure (Expected 409 Conflict)
+description: Submitting the same email again for event 1 triggers 409 Conflict 'Already registered'.
+url: "{{baseUrl}}/api/events/1/register"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "student_name": "Navya Mendiratta",
+      "roll_number": "2026MBAPM023",
+      "email": "navya.m@college.edu",
+      "phone": "+91 9876543210"
+    }
+order: 4000

@@ -1,0 +1,17 @@
+$kind: http-request
+name: 2. POST Register - Missing Fields Failure (Expected 400 Bad Request)
+description: Empty student_name triggers a 400 Bad Request from server-side validation.
+url: "{{baseUrl}}/api/events/1/register"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "student_name": "",
+      "roll_number": "2026MBAPM023",
+      "email": "missingname@college.edu",
+      "phone": "+91 9876543210"
+    }
+order: 2000

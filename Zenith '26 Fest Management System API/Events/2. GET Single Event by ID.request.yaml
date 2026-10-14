@@ -1,0 +1,5 @@
+$kind: http-request
+description: Returns full details for event ID 1, or 404 if not found.
+url: "{{baseUrl}}/api/events/1"
+method: GET
+order: 2000

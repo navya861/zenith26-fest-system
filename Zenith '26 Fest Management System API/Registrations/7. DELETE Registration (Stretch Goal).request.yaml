@@ -1,0 +1,5 @@
+$kind: http-request
+description: Admin cancels a registration by ID, immediately releasing the event seat.
+url: "{{baseUrl}}/api/registrations/1"
+method: DELETE
+order: 7000

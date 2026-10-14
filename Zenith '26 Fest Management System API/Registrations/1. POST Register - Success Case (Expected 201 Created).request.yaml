@@ -1,0 +1,16 @@
+$kind: http-request
+description: Registers a student for event 1. Validates non-empty fields, '@' in email, seat availability, and uniqueness.
+url: "{{baseUrl}}/api/events/1/register"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "student_name": "Navya Mendiratta",
+      "roll_number": "2026MBAPM023",
+      "email": "navya.m@college.edu",
+      "phone": "+91 9876543210"
+    }
+order: 1000

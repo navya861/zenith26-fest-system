@@ -1,0 +1,25 @@
+# Python virtual environment & cache
+venv/
+env/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Executables & binaries
+cloudflared.exe
+*.exe
+
+# Android & Gradle
+.gradle/
+build/
+*/build/
+android/.gradle/
+android/app/build/
+android/local.properties
+.idea/
+*.iml
+.DS_Store
+
+# Logs & temp
+*.log

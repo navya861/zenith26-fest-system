@@ -1,0 +1,17 @@
+$kind: http-request
+name: 3. POST Register - Invalid Email Failure (Expected 400 Bad Request)
+description: Email without '@' triggers 400 Bad Request.
+url: "{{baseUrl}}/api/events/1/register"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: |-
+    {
+      "student_name": "Navya Mendiratta",
+      "roll_number": "2026MBAPM023",
+      "email": "notanemailwithoutat",
+      "phone": "+91 9876543210"
+    }
+order: 3000

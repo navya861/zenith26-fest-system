@@ -1,0 +1,7 @@
+$kind: http-request
+description: Returns registrations specifically for event ID 1.
+url: "{{baseUrl}}/api/registrations?event_id=1"
+method: GET
+queryParams:
+  event_id: "1"
+order: 6000

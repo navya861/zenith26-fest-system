@@ -1,0 +1,4 @@
+$kind: collection
+description: Postman API Collection for Zenith '26 College Fest Management System (PM2-01 & PM2-02). Tests event queries, server-side registration validation, live capacity computation, and admin stats.
+variables:
+  baseUrl: http://localhost:8000

@@ -1,0 +1,5 @@
+$kind: http-request
+description: Validates that server correctly returns 404 Not Found when event ID does not exist.
+url: "{{baseUrl}}/api/events/9999"
+method: GET
+order: 3000
