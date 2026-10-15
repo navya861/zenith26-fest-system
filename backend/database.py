@@ -1,11 +1,35 @@
 import sqlite3
+import os
+import shutil
 from pathlib import Path
 
-# Resolve fest.db at project root: zenith26-fest-system/fest.db
-DB_PATH = Path(__file__).resolve().parent.parent / "fest.db"
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# On Vercel / serverless platforms, only /tmp is writable
+if os.environ.get("VERCEL"):
+    DB_PATH = Path("/tmp") / "fest.db"
+    ORIGINAL_DB = BASE_DIR / "fest.db"
+    if not DB_PATH.exists() and ORIGINAL_DB.exists():
+        try:
+            shutil.copy2(ORIGINAL_DB, DB_PATH)
+        except Exception as e:
+            print(f"Error copying fest.db to /tmp: {e}")
+else:
+    DB_PATH = BASE_DIR / "fest.db"
 
 def get_db_connection() -> sqlite3.Connection:
     """Returns a SQLite connection with Row factory enabled for column name access."""
+    if os.environ.get("VERCEL"):
+        if not DB_PATH.exists():
+            ORIGINAL_DB = BASE_DIR / "fest.db"
+            if ORIGINAL_DB.exists():
+                try:
+                    shutil.copy2(ORIGINAL_DB, DB_PATH)
+                except Exception:
+                    pass
+            else:
+                init_db()
+
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON;")
@@ -13,7 +37,8 @@ def get_db_connection() -> sqlite3.Connection:
 
 def init_db():
     """Creates the events and registrations tables if they do not exist."""
-    conn = get_db_connection()
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
     cursor = conn.cursor()
 
     cursor.execute("""
